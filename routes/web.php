@@ -19,3 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/videojuegos', [VideojuegosController::class, 'index'])->name('videojuegos.index');
+
+Route::get('/videojuegos/create', [VideojuegosController::class, 'create'])->name('videojuegos.create');
+
+Route::post('/videojuegos/create', [VideojuegosController::class, 'store'])->name('videojuegos.store');
+
+Route::get('/videojuegos/{id}/edit', [VideojuegosController::class, 'edit'])->name('videojuegos.edit');
+
+Route::put('/videojuegos/{id}/edit', [VideojuegosController::class, 'update'])->name('videojuegos.update');

@@ -12,13 +12,13 @@
     <title>Videojuegos</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -35,7 +35,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Nombre App</div>
+                <div class="sidebar-brand-text mx-3">WikiGames</div>
             </a>
 
             <!-- Divider -->
@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('videojuegos.index')}}">
+                <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Videojuegos</span></a>
             </li>
@@ -59,7 +59,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="{{route('videojuegos.create')}}">
+                <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Crear</span></a>
             </li>
@@ -107,7 +107,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">César</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -129,27 +129,55 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Videojuegos</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Editar videojuego</h1>
                     </div>
 
 
             </div>
-
-            <div class="row" style="padding: 1%;">
-                @foreach ($videojuegos as $videojuego)
-                    <div class="col-sm-2">
-                        <div class="card" style="width: 18rem;">
-                            <img src="/storage/imagenes/{{$videojuego->imagen}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$videojuego->nombre}}</h5>
-                                <p class="card-text">{{$videojuego->genero}}</p>
-                                <p class="card-text">{{$videojuego->fecha_salida}}</p>
-                                <a href="{{route('videojuegos.edit', $videojuego->id)}}" class="btn btn-primary">Editar</a>
-                            </div>
-                        </div>
+            <div class ="m-4">
+                <form method="POST" href="{{route('videojuegos.update', $videojuego->id)}}" enctype="multipart/form-data"> 
+                @csrf
+                @method('PUT')
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="nombre" value="{{$videojuego->nombre}}">
                     </div>
-                @endforeach
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Genero</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="genero" value="{{$videojuego->genero}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Fecha de salida</label>
+                        <input type="date" class="form-control" id="exampleInputEmail1" name="fecha_salida" value="{{$videojuego->fecha_salida}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Imagen</label>
+                        <input type="file" class="form-control" id="exampleInputEmail1" name="imagen" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Descripcion</label>
+                        <textarea type="text" class="form-control" id="exampleInputEmail1" name="descripcion"> {{$videojuego->descripcion}} </textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Personajes</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="personajes" value="{{$videojuego->personajes}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Consolas</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="consolas" value="{{$videojuego->consolas}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Jugadores</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="jugadores" value="{{$videojuego->jugadores}}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                </form>
             </div>
+
+
+            <!-- <div class="row" style="padding: 1%;">
+                <input type="text">
+            </div> -->
             <!-- End of Main Content -->
 
             <!-- Footer -->
@@ -194,21 +222,21 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
