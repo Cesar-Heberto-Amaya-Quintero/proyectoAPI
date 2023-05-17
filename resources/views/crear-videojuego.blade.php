@@ -128,7 +128,8 @@
 
             </div>
             <div class ="m-4">
-                <form method="POST" href="{{route('videojuegos.index')}}" enctype="multipart/form-data"> 
+                <form method="POST" href="{{route('videojuegos.index')}}" enctype="multipart/form-data">
+                @csrf
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="nombre">

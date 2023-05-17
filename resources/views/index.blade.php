@@ -132,7 +132,7 @@
 
             <div class="row" style="padding: 1%;">
                 @foreach ($videojuegos as $videojuego)
-                    <div class="col-sm-2">
+                    <div class="col">
                         <div class="card" style="width: 18rem;">
                             <img src="/storage/imagenes/{{$videojuego->imagen}}" class="card-img-top" alt="...">
                             <div class="card-body">
