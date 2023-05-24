@@ -139,7 +139,18 @@
                                 <h5 class="card-title">{{$videojuego->nombre}}</h5>
                                 <p class="card-text">{{$videojuego->genero}}</p>
                                 <p class="card-text">{{$videojuego->fecha_salida}}</p>
-                                <a href="{{route('videojuegos.edit', $videojuego->id)}}" class="btn btn-primary">Editar</a>
+                                <div class="row" style="padding: 1%;">
+                                    <div class="col">
+                                        <a href="{{route('videojuegos.edit', $videojuego->id)}}" class="btn btn-primary">Editar</a>
+                                    </div>
+                                    <div class="col">
+                                        <form action="{{route('videojuegos.destroy',$videojuego->id)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

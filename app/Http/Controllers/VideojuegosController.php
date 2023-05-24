@@ -69,4 +69,11 @@ class VideojuegosController extends Controller
 
         
     }
+
+    public function destroy(Request $request, $id)
+    {
+        $videojuego = Videojuego::find($id);
+        $videojuego->delete();
+        return redirect()->route('videojuegos.index');
+    }
 }

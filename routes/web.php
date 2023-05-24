@@ -27,3 +27,5 @@ Route::post('/videojuegos/create', [VideojuegosController::class, 'store'])->nam
 Route::get('/videojuegos/{id}/edit', [VideojuegosController::class, 'edit'])->name('videojuegos.edit');
 
 Route::put('/videojuegos/{id}/edit', [VideojuegosController::class, 'update'])->name('videojuegos.update');
+
+Route::delete('/videojuegos/{id}', [VideojuegosController::class, 'destroy'])->name('videojuegos.destroy');
